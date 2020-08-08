@@ -13,7 +13,7 @@ function showPosition(position) {
   var currentlon = position.coords.longitude;
 
 
-  var zomatoURl = 
+  
 }
 
 $("#submitButton").on("click", getLocation());
