@@ -1,4 +1,5 @@
-var x = document.getElementById("demo");
+var secondLocation = $("#secondDestination").val();
+
 
 function getLocation() {
   if (navigator.geolocation) {
@@ -12,8 +13,9 @@ function showPosition(position) {
   var currentLat =  position.coords.latitude;
   var currentlon = position.coords.longitude;
 
-
-  
 }
 
 $("#submitButton").on("click", getLocation());
+
+
+
