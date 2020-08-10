@@ -1,4 +1,5 @@
 # Middle-Point
+
 # Table of contents:
 1. Introduction
 2. How it works
@@ -15,4 +16,8 @@ The app will produce an efficient and effective way to provide the user with a c
 But who is TAPS INC? We are Teresa Heidt, Adrian Banda, Preston Nichols and Serge Noumbet. 
 # Image:
 
+
+Preston Nichols
 Teresa Heidt
+Serge Noumbet
+Adrian Banda
