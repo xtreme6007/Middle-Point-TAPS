@@ -1,7 +1,10 @@
 var secondLocation = $("#secondDestination").val();
+var fourSquareId = "YN1AUPOE5HOWLFCHNIO3YUILB3APQWNFSKZO5Q03JODNYNUC"
+var fourSquareSecret = "BXRN2XVMQSMXHWT1EKRZMJWLJNN3IAUEFULDKBUGRZ4XZQA4";
 
 
-var yelpKey = "ZeJDS-vTBehDf73kWJJZwa3WUhjV_JMDGmmxNGqnk7j-78M7ndWokKYbsOGzo20ihX6snK1WsaBTYThWvaC5oMlsuNcw94qvi1WCdKXh6QCP03K5Ylo3fu_8roowX3Yx"
+
+$(document).ready(function() {
 
 function getLocation() {
   if (navigator.geolocation) {
@@ -13,20 +16,30 @@ function getLocation() {
 
 function showPosition(position) {
   var currentLat =  position.coords.latitude;
-  var currentlon = position.coords.longitude;
-
+  var currentLon = position.coords.longitude;
+  callLocation(currentLat, currentLon);
 }
 
-
+function callLocation(lat, lon) {
+  var placesURL = "https://api.foursquare.com/v2/venues/explore?client_id="+ fourSquareId + "&client_secret="+ fourSquareSecret +"&v=20180323&ll=" + lat +"," + lon + "&query=coffee";
 $.ajax({
-  url: placeURL,
+  url: placesURL,
   method: "GET"
 }).then(function(response) {
-  console.log(response);
+  //console.log(response);
+  var locations = response.response.groups[0].items
+  for (var i = 0; i < locations.length; i++){
+    console.log(locations[i]);
+  } 
+  /*response.response.groups[0].items.forEach(location => {
+    console.log(location)
 
+  })*/
 });
+}
 
 $("#submitButton").on("click", getLocation());
 
 
 
+})
