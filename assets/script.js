@@ -66,6 +66,10 @@ $(document).ready(function () {
       method: "GET"
     }).then(function (response) {
       console.log(response);
+      var secondLat = response.results[0].locations[0].latLng.lat;
+      var secondLong = response.results[0].locations[0].latLng.lng;
+      console.log(secondLat);
+      console.log(secondLong);
 
     });
   }
