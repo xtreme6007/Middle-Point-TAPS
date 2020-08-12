@@ -6,6 +6,12 @@
     position: relative;
 }
 
+.text {
+    color: darkblue;
+    font-family: inherit;
+    
+}
+
 .text-block {
     position: absolute;
     bottom: 650px;
