@@ -1,20 +1,20 @@
 
 // global varabiles
 
-// get second location
-var secondLocation = $("#secondDestination").val();
+  // get second location
+  var secondLocation = $("#secondDestination").val();
 
-//FourSquare API ID
-var fourSquareId = "YN1AUPOE5HOWLFCHNIO3YUILB3APQWNFSKZO5Q03JODNYNUC"
+  //FourSquare API ID
+  var fourSquareId = "YN1AUPOE5HOWLFCHNIO3YUILB3APQWNFSKZO5Q03JODNYNUC"
 
-// FourSquare API Secret
-var fourSquareSecret = "BXRN2XVMQSMXHWT1EKRZMJWLJNN3IAUEFULDKBUGRZ4XZQA4";
+  // FourSquare API Secret
+  var fourSquareSecret = "BXRN2XVMQSMXHWT1EKRZMJWLJNN3IAUEFULDKBUGRZ4XZQA4";
 
-// Map Quest id
-var mapQuestId = "F2IINs24ZwJe2OApHyVeK1ARNa0ugysB";
+  // Map Quest id
+  var mapQuestId = "F2IINs24ZwJe2OApHyVeK1ARNa0ugysB";
 
 
-
+// when page loads
 $(document).ready(function () {
   // get current location fiunction
   function getLocation() {
@@ -38,34 +38,50 @@ $(document).ready(function () {
       url: placesURL,
       method: "GET"
     }).then(function (response) {
-      //console.log(response);
+      console.log(response);
       var locations = response.response.groups[0].items
       for (var i = 0; i < locations.length; i++) {
         console.log(locations[i]);
+        var name = locations[i].venue.name;
+        var address = locations[i].venue.location.address;
+        var summary = locations[i].reasons.items[0].summary;
+
+
+        
+        
+        
+        
       }
       /*response.response.groups[0].items.forEach(location => {
         console.log(location)
     
       })*/
     });
+  }
     // Map quest api to reverse single line addresses into lat and lon 
+    function reverseGeo() {
     var reverseGeoURL = "http://www.mapquestapi.com/geocoding/v1/address?key=F2IINs24ZwJe2OApHyVeK1ARNa0ugysB&location=" + secondLocation;
     $.ajax({
       url: reverseGeoURL,
       method: "GET"
     }).then(function (response) {
       console.log(response);
+      var secondLat = response.results[0].locations[0].latLng.lat;
+      var secondLong = response.results[0].locations[0].latLng.lng;
+      console.log(secondLat);
+      console.log(secondLong);
 
     });
-
-
   }
 
+  
+  
   $("#submitButton").on("click", getLocation());
+  $("#submitButton").on("click", reverseGeo());
+  
 
 
-
-})
+});
 
 
 /*
