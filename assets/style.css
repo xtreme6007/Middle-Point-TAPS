@@ -1,0 +1,18 @@
+.logo {
+    padding-left: 20px;
+}
+
+.container {
+    position: relative;
+}
+
+.text-block {
+    position: absolute;
+    bottom: 650px;
+    padding-right: 350px;
+    padding-left: 350px;
+    padding-bottom: 250px;
+    padding-top: 20px;
+    margin-left: 250px;
+    background-color: white;
+}
