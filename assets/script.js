@@ -1,11 +1,22 @@
+
+// global varabiles
+
+// get second location
 var secondLocation = $("#secondDestination").val();
+
+//FourSquare API ID
 var fourSquareId = "YN1AUPOE5HOWLFCHNIO3YUILB3APQWNFSKZO5Q03JODNYNUC"
+
+// FourSquare API Secret
 var fourSquareSecret = "BXRN2XVMQSMXHWT1EKRZMJWLJNN3IAUEFULDKBUGRZ4XZQA4";
+
+// Map Quest id
+var mapQuestId = "F2IINs24ZwJe2OApHyVeK1ARNa0ugysB";
 
 
 
 $(document).ready(function () {
-
+  // get current location fiunction
   function getLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition);
@@ -13,7 +24,7 @@ $(document).ready(function () {
       x.innerHTML = "Geolocation is not supported by this browser.";
     }
   }
-
+  // current lat and lon positions
   function showPosition(position) {
     var currentLat = position.coords.latitude;
     var currentLon = position.coords.longitude;
@@ -21,6 +32,7 @@ $(document).ready(function () {
   }
 
   function callLocation(lat, lon) {
+    // four square api URL
     var placesURL = "https://api.foursquare.com/v2/venues/explore?client_id=" + fourSquareId + "&client_secret=" + fourSquareSecret + "&v=20180323&ll=" + lat + "," + lon + "&query=coffee";
     $.ajax({
       url: placesURL,
@@ -36,6 +48,17 @@ $(document).ready(function () {
     
       })*/
     });
+    // Map quest api to reverse single line addresses into lat and lon 
+    var reverseGeoURL = "http://www.mapquestapi.com/geocoding/v1/address?key=F2IINs24ZwJe2OApHyVeK1ARNa0ugysB&location=" + secondLocation;
+    $.ajax({
+      url: reverseGeoURL,
+      method: "GET"
+    }).then(function (response) {
+      console.log(response);
+
+    });
+
+
   }
 
   $("#submitButton").on("click", getLocation());
