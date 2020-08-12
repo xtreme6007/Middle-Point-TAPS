@@ -9,16 +9,21 @@
 .text {
     color: darkblue;
     font-family: inherit;
-    
+
 }
 
-.text-block {
+.w3-card-4 {
     position: absolute;
-    bottom: 650px;
-    padding-right: 350px;
-    padding-left: 350px;
-    padding-bottom: 250px;
-    padding-top: 20px;
-    margin-left: 250px;
+    top: 50px;
+    bottom: 850px;
+    padding-right: 50px;
+    padding-left: 50px;
+    padding-bottom: 50px;
+    padding-top: 40px;
+    margin-left: 180px;
+    margin-right: 100px;
+    margin-top: 50px;
+    margin-bottom: 0px;
     background-color: white;
 }
+
