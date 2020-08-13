@@ -1,25 +1,42 @@
 
 // global varabiles
 
-  // get second location
-  var secondLocation;
+// get second location
+var secondLocation;
 
-  //FourSquare API ID
-  var fourSquareId = "YN1AUPOE5HOWLFCHNIO3YUILB3APQWNFSKZO5Q03JODNYNUC"
+//FourSquare API ID
+var fourSquareId = "YN1AUPOE5HOWLFCHNIO3YUILB3APQWNFSKZO5Q03JODNYNUC"
 
-  // FourSquare API Secret
-  var fourSquareSecret = "BXRN2XVMQSMXHWT1EKRZMJWLJNN3IAUEFULDKBUGRZ4XZQA4";
+// FourSquare API Secret
+var fourSquareSecret = "BXRN2XVMQSMXHWT1EKRZMJWLJNN3IAUEFULDKBUGRZ4XZQA4";
 
-  // Map Quest id
-  var mapQuestId = "F2IINs24ZwJe2OApHyVeK1ARNa0ugysB";
+// Map Quest id
+var mapQuestId = "F2IINs24ZwJe2OApHyVeK1ARNa0ugysB";
 
+var currentLat;
+var currentLon;
+var secondLat;
+var secondLon;
+
+if (typeof (Number.prototype.toRad) === "undefined") {
+  Number.prototype.toRad = function () {
+      return this * Math.PI / 180;
+  }
+}
+
+//-- Define degrees function
+if (typeof (Number.prototype.toDeg) === "undefined") {
+  Number.prototype.toDeg = function () {
+      return this * (180 / Math.PI);
+  }
+}
 
 // when page loads
 $(document).ready(function () {
   // get current location fiunction
   function getLocation() {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(showPosition);
+       navigator.geolocation.getCurrentPosition(showPosition);
     } else {
       x.innerHTML = "Geolocation is not supported by this browser.";
     }
@@ -27,11 +44,10 @@ $(document).ready(function () {
   // current lat and lon positions
   function showPosition(position) {
     // Devices current lattitude
-    var currentLat = position.coords.latitude;
+     currentLat = position.coords.latitude;
     // Devices current longitude
-    var currentLon = position.coords.longitude;
-    // call 
-    callLocation(currentLat, currentLon);
+     currentLon = position.coords.longitude;
+    
   }
 
   function callLocation(lat, lon) {
@@ -44,6 +60,7 @@ $(document).ready(function () {
       console.log(response);
       // variable for locations objects
       var locations = response.response.groups[0].items
+      var returnLocations = [];
       for (var i = 0; i < locations.length; i++) {
         console.log(locations[i]);
 
@@ -54,21 +71,18 @@ $(document).ready(function () {
         // summary of location
         var summary = locations[i].reasons.items[0].summary;
 
-
-        
-        
-        
-        
+        returnLocations.push({ name, address, summary });
       }
+      return returnLocations;
       /*response.response.groups[0].items.forEach(location => {
         console.log(location)
     
       })*/
     });
   }
-    // Map quest api to reverse single line addresses into lat and lon 
-    function reverseGeo() {
-     secondLocation = $("#secondDestination").val();
+  // Map quest api to reverse single line addresses into lat and lon 
+  function reverseGeo() {
+    secondLocation = $("#secondDestination").val();
     var reverseGeoURL = "http://www.mapquestapi.com/geocoding/v1/address?key=F2IINs24ZwJe2OApHyVeK1ARNa0ugysB&location=" + secondLocation;
     $.ajax({
       url: reverseGeoURL,
@@ -76,45 +90,58 @@ $(document).ready(function () {
     }).then(function (response) {
       console.log(response);
       // second destination latitude
-      var secondLat = response.results[0].locations[0].latLng.lat;
+       secondLat = response.results[0].locations[0].latLng.lat;
       // second destination longitude
-      var secondLong = response.results[0].locations[0].latLng.lng;
+       secondLon = response.results[0].locations[0].latLng.lng;
       console.log(secondLat);
-      console.log(secondLong);
+      console.log(secondLon);
 
+
+     
     });
-    return [secondLong, secondLat];
+
   }
 
-// JS fiddle by Kévin Rignault link: http://jsfiddle.net/kevinrignault/gzq64p56/ 
+  // Wuth help from JS fiddle by Kévin Rignault link: http://jsfiddle.net/kevinrignault/gzq64p56/ 
   //-- Define middle point function
-function middlePoint(lat1, lng1, lat2, lng2) {
-	
-  //-- Longitude difference
-  var dLng = (lng2 - lng1).toRad();
+  function middlePoint(lat1, lng1, lat2, lng2) {
 
-  //-- Convert to radians
-  lat1 = currentLat.toRad();
-  lat2 = lat2.toRad();
-  lng1 = secondLong.toRad();
+    //-- Longitude difference
+    var dLng = (lng2 - lng1).toRad();
 
-  var bX = Math.cos(lat2) * Math.cos(dLng);
-  var bY = Math.cos(lat2) * Math.sin(dLng);
-  var lat3 = Math.atan2(Math.sin(lat1) + Math.sin(lat2), Math.sqrt((Math.cos(lat1) + bX) * (Math.cos(lat1) + bX) + bY * bY));
-  var lng3 = lng1 + Math.atan2(bY, Math.cos(lat1) + bX);
+    //-- Convert to radians
+    lat1 = lat1.toRad();
+    lat2 = lat2.toRad();
+    lng1 = lng1.toRad();
 
-  //-- Return result
-  return [lng3.toDeg(), lat3.toDeg()];
-}
+    var bX = Math.cos(lat2) * Math.cos(dLng);
+    var bY = Math.cos(lat2) * Math.sin(dLng);
+    var lat3 = Math.atan2(Math.sin(lat1) + Math.sin(lat2), Math.sqrt((Math.cos(lat1) + bX) * (Math.cos(lat1) + bX) + bY * bY));
+    var lng3 = lng1 + Math.atan2(bY, Math.cos(lat1) + bX);
 
-  
-  
-  $("#submitButton").on("click", function(){
-    callLocation();
-    reverseGeo();
+    //-- Return result
+    return [lng3.toDeg(), lat3.toDeg()];
+  }
+
+
+
+  $("#submitButton").on("click", function () {
+      getLocation();
+    var secondLocation = reverseGeo();
+    var middlepoint;
+    setTimeout(function () {
+      console.log(secondLat, secondLon);
+      console.log(currentLat, currentLon);
+      
+      middlepoint = middlePoint(currentLat, currentLon, secondLat, secondLon);
+      console.log(middlepoint[0]);
+      console.log(middlepoint[1]);
+      var middlePointResults = callLocation(middlepoint[0], middlepoint[1]);
+      console.log(middlePointResults);
+    }, 7000);
   });
-  
-  
+
+
 
 
 });
