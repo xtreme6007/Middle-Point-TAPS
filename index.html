@@ -1,157 +1,166 @@
 <!DOCTYPE html>
-
-<html>
-<title>The Middle Point</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<link rel="stylesheet" href="assets/style.css">
-
-
-<!-- CSS -->
-
-<style>
-  body,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: "Raleway", Arial, Helvetica, sans-serif
-  }
-</style>
-
-<!-- <body class="w3-light-grey"> -->
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Middle Point</title>
+</head>
 <body>
 
-  <!-- Navigation Bar -->
-  <div class="w3-bar w3-white w3-border-bottom w3-xlarge">
-    <img class="logo" src="assets/img/logo4.png" width="120px" height="100px">
-  </div>
+    <div class='container'>
+        <img src= 'assets/img/cloudslarge.jpg' alt='Sky' width='100%' class='fadeImage' />
+        <header id='showcase'>
 
-  
-
-  <!-- Header -->
- 
-  <header class="w3-display-container w3-content w3-hide-small" style="max-width:1400px">
-    <div class="container"></div>
-    <img class="w3-image" src="assets/img/city.jpg" alt="City" width="1500" height="600">
-
-    <div class="w3-display-middle" style="width:65%"></div>
-
-
-      <h2>If you are meeting friends, colleagues or a complete stranger, this app will help you find the perfect place to meet.
-      It can be tricky to find a good half way point sometimes but with Middle Point
-      You get to decide 
-      <i>what</i> sort of place you want to meet, depending on the <i>mood</i> you are in.</h2>
-    
-    
-    
-      <div class="w3-card-4">
-
-        <!-- Title -->
-        <header class="w3-container">
-          <h1>Middle Point</h1>
-        </header>
-
-          <div class="w3-row-padding">
-            <!-- Address 1 -->
-            <div class="w3-half">
-              <label>Address 1</label>
-              <input class="w3-input w3-border" type="text" placeholder="Address 1">
-            </div>
-            <!-- Address 2 -->
-            <div class="w3-half">
-              <label>Address 2</label>
-              <input class="w3-input w3-border" type="text" placeholder="Address 2" id = "secondDestination">
-            </div>
-          </div>
-          <br>
-          <br>
-          <!-- Mood Selection -->
-          <div class="w3-row-padding">
-            <select class="w3-select" onchange="color(this.value)">
-              <option selected value=#ECEFF1>Choose your Mood</option>
-              <option id="mood1" value=#85C1E9>Mood 1</option>
-              <option id="mood2" value=#F9E79F>Mood 2</option>
-              <option id="mood3" value=#EC7063>Mood 3</option>
-            </select>
-          </div>
-<br>
-            <input type="submit" id="submitButton" class="w3-btn w3-round">Submit</input>
-    
+            <h1>Welcome to the</h1>
+            <p></p>
+            <h1>Middle Point</h1>
+        <div id='content'>
+            We are here to help you find the middle point! <br> We will help you find the
+            middle meeting point based on address and <i>what</i> sort of <i>mood</i> you are in.
+            <br>
+            <a href='index.html' class='btn'>Start here!</a>
         </div>
-
-      </div>
-
-  </header>
-
-
-
-
-  <!-- Display Reults -->
-  <div class="w3-content" style="max-width:1100px;" id="results">
-
-      
-  </div>
-
-  <!-- Footer -->
-  <footer class="w3-container w3-center w3-opacity w3-margin-bottom">
-    <h5>Contributers</h5>
-
-    <!-- Teresa -->
-    <div class="w3-xlarge w3-padding-16">
-      Teresa Heidt
-      <br>
-      <a href="https://www.facebook.com/teresa.heidt.14/"><i class="fa fa-facebook-official w3-hover-opacity"></i></a>
-      <a href='https://github.com/teresaheidt'><i class="fa fa-github"></i></a>
-      <a href='https://www.linkedin.com/in/teresa-heidt-a2a4641/'><i class="fa fa-linkedin"></i></a>
+        
+    </header>
+       
     </div>
-    <!-- Adrian -->
-    <div class="w3-xlarge w3-padding-16">
-      Adrian Banda
-      <br>
-      <!-- <i class="fa fa-facebook-official w3-hover-opacity"></i> -->
-      <a href='https://github.com/banda-adrian'><i class="fa fa-github"></i></a>
-      <a href='http://linkedin.com/in/adrian-banda-44959a150'><i class="fa fa-linkedin"></i></a>
-    </div>
-
-    <!-- Preston -->
-    <div class="w3-xlarge w3-padding-16">
-      Preston Nichols
-      <br>
-      <a href='https://www.facebook.com/preston.nichols.568'><i
-          class="fa fa-facebook-official w3-hover-opacity"></i></a>
-      <a href='https://github.com/xtreme6007'><i class="fa fa-github"></i></a>
-      <a href='https://www.linkedin.com/in/preston-nichols-1aa72084/'><i class="fa fa-linkedin"></i></a>
-    </div>
-
-    <!-- Serge -->
-    <div class="w3-xlarge w3-padding-16">
-      Serge Noumbet
-      <br>
-      <!-- <i class="fa fa-facebook-official w3-hover-opacity"></i> -->
-      <a href='https://github.com/sergebryan'> <i class="fa fa-github"></i></a>
-      <a href='linkedin.com/in/serge-noumbet/'><i class="fa fa-linkedin"></i></a>
-    </div>
-
-  </footer>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="assets/script.js"></script>
-
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .fadeImage {
+            opacity: 0;
+            -webkit-animation: fadeout 4s;
+            /* Safari, Chrome and Opera > 12.1 */
+            -moz-animation: fadeout 4s;
+            /* Firefox < 16 */
+            -ms-animation: fadeout 4s;
+            /* Internet Explorer */
+            -o-animation: fadeout 4s;
+            /* Opera < 12.1 */
+            animation: fadeout 4s;
+            display: block;
+            margin: 25px auto;
+        }
+        @keyframes fadeout {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+        /* Firefox < 16 */
+        @-moz-keyframes fadeout {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+        /* Safari, Chrome and Opera > 12.1 */
+        @-webkit-keyframes fadeout {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: -0;
+            }
+        }
+        /* Internet Explorer */
+        @-ms-keyframes fadeout {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+        /* Opera < 12.1 */
+        @-o-keyframes fadeout {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+        .container {
+            margin: 0;
+            padding: 0;
+            position: relative;
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            color: rgb(23, 199, 190);
+        }
+        #showcase {
+            height: 400px;
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        #showcase h1 {
+            font-size: 80px;
+            line-height: 1;
+            position: relative;
+            top: 10%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: heading;
+            animation-duration: 3s;
+            animation-fill-mode: forwards;
+        }
+        @keyframes heading {
+            0% {
+                top: -50px
+            }
+            100% {
+                top: 200px
+            }
+        }
+        #content {
+            position: relative;
+            font-size: 24px;
+            top: 50%;
+            left: 20%;
+            animation-name: content;
+            animation-duration: 3s;
+            animation-fill-mode: forwards;
+        }
+        @keyframes content {
+            0% {
+                left: -1000px;
+            }
+            100% {
+                left: 0;
+            }
+        }
+        .btn {
+            display: inline-block;
+            color: rgb(23, 199, 190);
+            background-color:rgb(173, 245, 241);
+            text-decoration: none;
+            padding: 3rem 3 rem;
+            border: #fff 1px solid;
+            margin-top: 40px;
+            opacity: 0;
+            animation-name: btn;
+            animation-duration: 3s;
+            animation-delay: 3s;
+            animation-fill-mode: forwards;
+        }
+        @keyframes btn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
 </body>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-<script>
-      function color(value){
-        document.body.style.backgroundColor=value;
-    }
-</script>
-
 </html>
