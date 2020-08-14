@@ -28,10 +28,10 @@
   <!-- Header -->
   <header class="w3-display-container w3-content" style="max-width:1400px">
     <div class="w3-container">
-      <img class="w3-image" src="assets/img/city.jpg" alt="City" width="1500" height="600">
+      <img class="w3-image" src="assets/img/city.jpg" alt="City" width="1500" height="100">
       <div class="w3-display-middle" style="width:65%">
         <div class="w3-container">
-        <h2 id="w3-content" style="margin-bottom: 300px;">
+        <h2 id="w3-content">
           It isn't always easy finding a good half way point when you plan on meeting someone.  
           But with Middle Point you decide
           what <i> sort </i> of place you want to meet in. 
@@ -39,9 +39,10 @@
           Enter the address points below, choose the mood and we will generate the places for you.
         </h2>
         </div>
+        <br>
 
         <!-- Address Box -->
-        <div class="w3-card-4 w3-mobilex">
+        <div class="w3-card-4 w3-mobilex" id="addressBox" style=" border-radius: 30px; padding-bottom: 30px; box-shadow: 5px 5px 20px 20px rgb(83, 82, 82)">
           <!-- Title -->
           <header class="w3-container">
             <h1>Middle Point</h1>
@@ -49,13 +50,15 @@
           <div class="w3-row-padding">
             <!-- Address 1 -->
             <div class="w3-half">
-              <label>Address 1</label>
+              <label><strong>Address 1</strong</label>
               <input class="w3-input w3-border" type="text" placeholder="Address 1">
             </div>
             <!-- Address 2 -->
             <div class="w3-half">
-              <label>Address 2</label>
-              <input class="w3-input w3-border" type="text" placeholder="Address 2" id ="secondDestination">
+
+              <label><strong>Address 2</strong></label>
+              <input class="w3-input w3-border" type="text" placeholder="Address 2">
+
             </div>
           </div>
           <br>
@@ -64,9 +67,11 @@
           <div class="w3-row-padding">
             <select class="w3-select" onchange="color(this.value)">
               <option selected value=#ECEFF1>Choose your Mood</option>
-              <option id="mood1" value=#85C1E9>Social</option>
+              <option id="mood1" value=#85C1E9>Entertainment</option>
               <option id="mood2" value=#F9E79F>Business</option>
-              <option id="mood3" value=#EC7063>Romantic</option>
+              <option id="mood3" value=#EC7063>Study Time</option>
+              <option id="mood4" value=#EC7063>Child Friendly</option>
+              <option id="mood5" value=#EC7063>Hungry</option>
             </select>
           </div>
         </div>
@@ -127,8 +132,16 @@
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
+
   function color(value) {
     document.body.style.backgroundColor = value;
   }
+
+  // change the image on the mood dropline
+
+  
+
+
+
 </script>
 </html>
