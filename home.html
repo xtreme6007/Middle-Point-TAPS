@@ -28,9 +28,9 @@
   <!-- Header -->
   <header class="w3-display-container w3-content" style="max-width:1400px">
     <div class="w3-container">
-      <img class="w3-image" src="assets/img/city.jpg" alt="City" width="1500" height="100">
+      <img id='changing-image' class="w3-image" src="assets/img/city.jpg" alt="City" width="1500" height="100">
       <div class="w3-display-middle" style="width:65%">
-        <div class="w3-container">
+        
         <h2 id="w3-content">
           It isn't always easy finding a good half way point when you plan on meeting someone.  
           But with Middle Point you decide
@@ -38,7 +38,7 @@
           You can also determine the type of place by <i>mood.</i><br><p>
           Enter the address points below, choose the mood and we will generate the places for you.
         </h2>
-        </div>
+        
         <br>
 
         <!-- Address Box -->
@@ -63,13 +63,13 @@
           <br>
           <!-- Mood Selection -->
           <div class="w3-row-padding">
-            <select class="w3-select" onchange="color(this.value)">
-              <option selected value=#ECEFF1>Choose your Mood</option>
-              <option id="mood1" value=#85C1E9>Entertainment</option>
-              <option id="mood2" value=#F9E79F>Business</option>
-              <option id="mood3" value=#EC7063>Study Time</option>
-              <option id="mood4" value=#EC7063>Child Friendly</option>
-              <option id="mood5" value=#EC7063>Hungry</option>
+          <select class="w3-select" onchange="updatePage(this.value, this.options[this.selectedIndex].getAttribute('img'), this.options[this.selectedIndex].getAttribute('alt') )">
+              <option selected value=#ECEFF1 img='./assets/img/city.jpg'>Choose your Mood</option>
+              <option id="mood1" value=#85C1E9 img="./assets/img/cinema.jpg" alt='cinema'>Entertainment</option>
+              <option id="mood2" value=#F9E79F img="./assets/img/business.jpg" alt='business'>Business</option>
+              <option id="mood3" value=#EC7063 img="./assets/img/library.jpg" alt='study'>Study Time</option>
+              <option id="mood4" value=#EC7063 img="./assets/img/park.jpg" alt='park'>Child Friendly</option>
+              <option id="mood5" value=#EC7063 img="./assets/img/restaurant.jpg" alt='restaurant'>Hungry</option>
             </select>
           </div>
         </div>
@@ -98,32 +98,34 @@
     <div class="w3-xlarge w3-padding-16">
       Teresa Heidt
       <br>
-      <a href='https://github.com/teresaheidt'><i class="fa fa-github"></i></a>
-      <a href='https://www.linkedin.com/in/teresa-heidt-a2a4641/'><i class="fa fa-linkedin"></i></a>
+      <a href='https://github.com/teresaheidt' target="_blank"> <i class="fa fa-github"></i></a>
+      <a href='https://www.linkedin.com/in/teresa-heidt-a2a4641/' target="_blank"> <i class="fa fa-linkedin"></i></a>
     </div>
     <!-- Adrian -->
     <div class="w3-xlarge w3-padding-16">
       Adrian Banda
       <br>
       <!-- <i class="fa fa-facebook-official w3-hover-opacity"></i> -->
-      <a href='https://github.com/banda-adrian'><i class="fa fa-github"></i></a>
-      <a href='http://linkedin.com/in/adrian-banda-44959a150'><i class="fa fa-linkedin"></i></a>
+      <a href='https://github.com/banda-adrian' target="_blank"> <i class="fa fa-github"></i></a>
+      <a href='http://linkedin.com/in/adrian-banda-44959a150' target="_blank"> <i class="fa fa-linkedin"></i></a>
     </div>
     <!-- Preston -->
     <div class="w3-xlarge w3-padding-16">
       Preston Nichols
       <br>
-      <a href='https://github.com/xtreme6007'><i class="fa fa-github"></i></a>
-      <a href='https://www.linkedin.com/in/preston-nichols-1aa72084/'><i class="fa fa-linkedin"></i></a>
+      <a href='https://github.com/xtreme6007' target="_blank"> <i class="fa fa-github"></i></a>
+      <a href='https://www.linkedin.com/in/preston-nichols-1aa72084/' target="_blank"> <i class="fa fa-linkedin"></i></a>
     </div>
+
     <!-- Serge -->
     <div class="w3-xlarge w3-padding-16">
       Serge Noumbet
       <br>
       <!-- <i class="fa fa-facebook-official w3-hover-opacity"></i> -->
-      <a href='https://github.com/sergebryan'> <i class="fa fa-github"></i></a>
-      <a href='https://www.linkedin.com/in/serge-noumbet/'><i class="fa fa-linkedin"></i></a>
+      <a href='https://github.com/sergebryan' target="_blank"> <i class="fa fa-github"></i></a>
+      <a href='https://www.linkedin.com/in/serge-noumbet/' target="_blank"> <i class="fa fa-linkedin"></i></a>
     </div>
+
   </footer>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="assets/script.js"></script>
@@ -131,15 +133,14 @@
 <script src="jquery-3.5.1.min.js"></script>
 <script>
 
-  function color(value) {
-    document.body.style.backgroundColor = value;
+  function updatePage(color, image, alt) {
+    console.log(color, image)
+    document.body.style.backgroundColor = color;
+    document.getElementById('changing-image').src = image;
+    document.getElementById('changing-image').alt = alt
   }
 
+
   // change the image on the mood dropline
-
-  
-
-
-
 </script>
 </html>
