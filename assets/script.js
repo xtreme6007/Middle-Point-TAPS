@@ -1,4 +1,3 @@
-
 // global varabiles
 
 // get second location
@@ -88,7 +87,7 @@ $(document).ready(function () {
       url: reverseGeoURL,
       method: "GET"
     }).then(function (response) {
-      //console.log(response);
+      console.log(response);
       // second destination latitude
        secondLat = response.results[0].locations[0].latLng.lat;
       // second destination longitude
@@ -126,16 +125,16 @@ $(document).ready(function () {
 
   $("#submitButton").on("click", function () {
       getLocation();
-    var secondLocations = reverseGeo();
+    var secondLocation = reverseGeo();
     var middlepoint;
     setTimeout(function () {
-      //console.log(secondLat, secondLon);
+      console.log(secondLat, secondLon);
       //console.log(currentLat, currentLon);
       
       middlepoint = middlePoint(currentLat, currentLon, secondLat, secondLon);
       console.log(middlepoint[0]);
       console.log(middlepoint[1]);
-      var middlePointResults = callLocation(middlepoint[0], middlepoint[1]);
+      var middlePointResults = callLocation(middlepoint[1], middlepoint[0]);
       console.log(middlePointResults);
     }, 7000);
   });
@@ -161,8 +160,6 @@ function openLink(evt, linkName) {
   document.getElementById(linkName).style.display = "block";
   evt.currentTarget.className += " w3-red";
 }
-
-
 Click on the first tablink on load
 document.getElementsByClassName("tablink")[0].click();
 */
