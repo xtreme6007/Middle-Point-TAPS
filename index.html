@@ -1,25 +1,162 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel= "stylesheet" type="text/css" href="assets/style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Middle Point</title>
 </head>
 <body>
-    <form><input type= "text" id = "currentLocation"> <input type = "text" id = "otherLocation"></form>
-    <button type = "submit" id = "submitButton"></button>
-
-
-
-
-
-
-
-    
-    <script src="jquery-3.5.1.min.js"></script>
-    <script src = "assets/script.js"></script>
+    <div class='container'>
+        <img src= 'assets/img/cloudslarge.jpg' alt='Sky' width='100%' class='fadeImage' />
+        <header id='showcase'>
+            <h1>Welcome to the</h1>
+            <p></p>
+            <h1>Middle Point</h1>
+            <div id='content'>
+                Finding the middle point between two locations <br> 
+                has never been easier! <br>
+                <a href='home.html' class='btn'>Start here!</a>
+            </div>
+    </header>
+    </div>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .fadeImage {
+            opacity: 0;
+            -webkit-animation: fadeout 4s;
+            /* Safari, Chrome and Opera > 12.1 */
+            -moz-animation: fadeout 4s;
+            /* Firefox < 16 */
+            -ms-animation: fadeout 4s;
+            /* Internet Explorer */
+            -o-animation: fadeout 4s;
+            /* Opera < 12.1 */
+            animation: fadeout 4s;
+            display: block;
+            margin: 25px auto;
+        }
+        @keyframes fadeout {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+        /* Firefox < 16 */
+        @-moz-keyframes fadeout {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+        /* Safari, Chrome and Opera > 12.1 */
+        @-webkit-keyframes fadeout {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: -0;
+            }
+        }
+        /* Internet Explorer */
+        @-ms-keyframes fadeout {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+        /* Opera < 12.1 */
+        @-o-keyframes fadeout {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+        .container {
+            margin: 0;
+            padding: 0;
+            position: relative;
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            color: rgb(23, 199, 190);
+        }
+        #showcase {
+            height: 400px;
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        #showcase h1 {
+            font-size: 80px;
+            line-height: 1;
+            position: relative;
+            top: 10%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: heading;
+            animation-duration: 3s;
+            animation-fill-mode: forwards;
+        }
+        @keyframes heading {
+            0% {
+                top: -50px
+            }
+            100% {
+                top: 200px
+            }
+        }
+        #content {
+            position: relative;
+            font-size: 24px;
+            top: 50%;
+            left: 20%;
+            animation-name: content;
+            animation-duration: 3s;
+            animation-fill-mode: forwards;
+        }
+        @keyframes content {
+            0% {
+                left: -1000px;
+            }
+            100% {
+                left: 0;
+            }
+        }
+        .btn {
+            display: inline-block;
+            color: rgb(23, 199, 190);
+            background-color:rgb(173, 245, 241);
+            text-decoration: none;
+            padding: 3rem 3 rem;
+            border: #fff 1px solid;
+            margin-top: 40px;
+            opacity: 0;
+            animation-name: btn;
+            animation-duration: 3s;
+            animation-delay: 3s;
+            animation-fill-mode: forwards;
+        }
+        @keyframes btn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
 </body>
+
 </html>
