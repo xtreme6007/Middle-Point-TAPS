@@ -18,73 +18,91 @@
   h6 {
     font-family: "Raleway", Arial, Helvetica, sans-serif
   }
+
+  #bgimg {
+    background-image: url("assets/img/city.jpg");
+    width: 1500px;
+    height: 1800px;
+  }
 </style>
 <!-- <body class="w3-light-grey"> -->
+
 <body>
   <!-- Navigation Bar -->
   <div class="w3-bar w3-white w3-border-bottom">
     <a class="w3-bar-item"><img class="logo" src="assets/img/logo.png" width="120px" height="100px"></a>
   </div>
   <!-- <img class="logo" src="assets/img/" -->
+
   <!-- Header -->
-  <header class="w3-display-container w3-content" style="max-width:1400px">
-    <div class="w3-container">
-      <img id='changing-image' class="w3-image" src="assets/img/city.jpg" alt="City" width="1500" height="100">
-      <div class="w3-display-middle" style="width:65%">
-        
-        <h2 id="w3-content">
-          It isn't always easy finding a good half way point when you plan on meeting someone.  
-          But with Middle Point you decide
-          what <i> sort </i> of place you want to meet in. 
-          You can also determine the type of place by <i>mood.</i><br><p>
-          Enter the address points below, choose the mood and we will generate the places for you.
-        </h2>
-        
-        <br>
+  <header class="w3-display-container w3-content w3-red" style="max-width:1390px">
 
-        <!-- Address Box -->
-        <div class="w3-card-4 w3-mobilex" id="addressBox" style=" border-radius: 30px; padding-bottom: 30px; box-shadow: 5px 5px 20px 20px rgb(83, 82, 82)">
-          <!-- Title -->
-          <header class="w3-container">
-            <h1>Middle Point</h1>
-          </header>
-          <div class="w3-row-padding">
-            <!-- Address 1 -->
-            <div class="w3-half">
-              <label><strong>Address 1</strong</label>
-              <input class="w3-input w3-border" type="text" placeholder="Address 1" id ="query">
-            </div>
-            <!-- Address 2 -->
-            <div class="w3-half">
+    <div class="w3-container w3-content" style="height:1000px">
 
-              <label><strong>Address 2</strong></label>
-              <input class="w3-input w3-border" type="text" placeholder="Address 2" id= "secondDestination">
+      <!-- <img id='changing-image' class="w3-image" src="assets/img/city.jpg" alt="City" width="1500" height="100"> -->
 
-            </div>
+      <h3 class="w3-content">
+        It isn't always easy finding a good half way point when you plan on meeting someone.
+        But with Middle Point you decide
+        what <i> sort </i> of place you want to meet in.
+        You can also determine the type of place by <i>mood.</i><br>
+        Enter the address points below, choose the mood and we will generate the places for you.
+      </h3>
+
+      <br>
+
+      <!-- Address Box -->
+      <div class="w3-card-4 w3-light-grey w3-content w3-cell-middle  " id="addressBox" style=" border-radius: 30px; padding-bottom: 30px; box-shadow: 5px 5px 20px 20px rgb(83, 82, 82)">
+        <!-- Title -->
+        <header class="w3-container w3-center ">
+          <h1>Middle Point</h1>
+        </header>
+
+        <div class="w3-row-padding">
+
+          <!-- Address 2 -->
+          <div class="w3-half">
+            <label><strong>Second Address</strong></label>
+            <input class="w3-input w3-border" type="text" placeholder="ex. 1234 Anywhere Rd, City, State" id="secondDestination">
           </div>
-          <br>
-          <br>
-          <!-- Mood Selection -->
-          <div class="w3-row-padding">
-          <select class="w3-select" onchange="updatePage(this.value, this.options[this.selectedIndex].getAttribute('img'), this.options[this.selectedIndex].getAttribute('alt') )">
+
+        </div>
+
+        <br>
+        <br>
+        <!-- Mood Selection -->
+        <div class="w3-row-padding">
+          <!-- Choose Category -->
+          <div class="w3-half">
+            <label><strong>Choose Category</strong></label>
+            <input class="w3-input w3-border" type="text" placeholder="ex. Bars, Zoo, Coffee, Movies, etc...">
+
+          </div>
+          <!-- <select class="w3-select" onchange="updatePage(this.value, this.options[this.selectedIndex].getAttribute('img'), this.options[this.selectedIndex].getAttribute('alt') )">
               <option selected value=#ECEFF1 img='./assets/img/city.jpg'>Choose your Mood</option>
               <option id="mood1" value=#85C1E9 img="./assets/img/cinema.jpg" alt='cinema'>Entertainment</option>
               <option id="mood2" value=#F9E79F img="./assets/img/business.jpg" alt='business'>Business</option>
               <option id="mood3" value=#EC7063 img="./assets/img/library.jpg" alt='study'>Study Time</option>
               <option id="mood4" value=#EC7063 img="./assets/img/park.jpg" alt='park'>Child Friendly</option>
               <option id="mood5" value=#EC7063 img="./assets/img/restaurant.jpg" alt='restaurant'>Hungry</option>
-            </select>
-          </div>
+            </select> -->
         </div>
         <br>
+
         <div class="w3-row-padding w3-center">
           <button id="submitButton" class="w3-button w3-black w3-round w3-hover-aqua">Submit</button>
         </div>
+
       </div>
     </div>
   </header>
+
+  <br>
+  <br>
+
   <!-- Display Reults MAP -->
-  <div class="w3-content" style="max-width:1100px;" id="results">
+  <div class="w3-display-container w3-content" style="max-width:1400px">
+
     <div class="w3-row-padding">
       <div class="w3-quarter w3-blue" style="height:1000px">
         <p>Info</p>
@@ -105,7 +123,9 @@
         <p>Google Maps</p>
       </div>
     </div>
+
   </div>
+
   <!-- Footer -->
   <footer class="w3-container w3-center w3-opacity w3-margin-bottom">
     <h5>Contributers</h5>
@@ -129,7 +149,8 @@
       Preston Nichols
       <br>
       <a href='https://github.com/xtreme6007' target="_blank"> <i class="fa fa-github"></i></a>
-      <a href='https://www.linkedin.com/in/preston-nichols-1aa72084/' target="_blank"> <i class="fa fa-linkedin"></i></a>
+      <a href='https://www.linkedin.com/in/preston-nichols-1aa72084/' target="_blank"> <i
+          class="fa fa-linkedin"></i></a>
     </div>
 
     <!-- Serge -->
