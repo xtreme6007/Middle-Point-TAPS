@@ -71,7 +71,7 @@ $(document).ready(function () {
         // name of locations
         var name = locations[i].venue.name;
         // adress of locations
-        var address = locations[i].venue.location.address;
+        var address = locations[i].venue.location.formattedAddress[0] + locations[i].venue.location.formattedAddress[1] + locations[i].venue.location.formattedAddress[2];
         // summary of location
         var summary = locations[i].reasons.items[0].summary;
 
