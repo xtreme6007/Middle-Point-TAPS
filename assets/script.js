@@ -1,4 +1,3 @@
-
 // global varabiles
 
 // get second location
@@ -52,7 +51,7 @@ $(document).ready(function () {
 
   function callLocation(lat, lon) {
     // four square api URL
-    var placesURL = "https://api.foursquare.com/v2/venues/explore?client_id=" + fourSquareId + "&client_secret=" + fourSquareSecret + "&v=20180323&ll=" + lat + "," + lon + "&query=coffee";
+    var placesURL = "https://api.foursquare.com/v2/venues/explore?client_id=" + fourSquareId + "&client_secret=" + fourSquareSecret + "&v=20180323&ll=" + lon + "," + lat + "&query=coffee";
     $.ajax({
       url: placesURL,
       method: "GET"
@@ -62,7 +61,7 @@ $(document).ready(function () {
       var locations = response.response.groups[0].items
       var returnLocations = [];
       for (var i = 0; i < locations.length; i++) {
-        //console.log(locations[i]);
+        console.log(locations[i]);
 
         // name of locations
         var name = locations[i].venue.name;
@@ -88,7 +87,7 @@ $(document).ready(function () {
       url: reverseGeoURL,
       method: "GET"
     }).then(function (response) {
-      //console.log(response);
+      console.log(response);
       // second destination latitude
        secondLat = response.results[0].locations[0].latLng.lat;
       // second destination longitude
@@ -126,7 +125,8 @@ $(document).ready(function () {
 
   $("#submitButton").on("click", function () {
       getLocation();
-    var secondLocations = reverseGeo();
+     reverseGeo();
+    //console.log(secondLocation)
     var middlepoint;
     setTimeout(function () {
       //console.log(secondLat, secondLon);
@@ -161,8 +161,6 @@ function openLink(evt, linkName) {
   document.getElementById(linkName).style.display = "block";
   evt.currentTarget.className += " w3-red";
 }
-
-
 Click on the first tablink on load
 document.getElementsByClassName("tablink")[0].click();
 */
