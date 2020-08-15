@@ -71,7 +71,7 @@ $(document).ready(function () {
         // name of locations
         var name = locations[i].venue.name;
         // adress of locations
-        var address = locations[i].venue.location.formattedAddress[0] + locations[i].venue.location.formattedAddress[1] + locations[i].venue.location.formattedAddress[2];
+        var address = locations[i].venue.location.formattedAddress[0] + " " + locations[i].venue.location.formattedAddress[1]+ " " + locations[i].venue.location.formattedAddress[2];
         // summary of location
         var summary = locations[i].reasons.items[0].summary;
 
@@ -104,7 +104,7 @@ $(document).ready(function () {
     // get value from second address text box
     secondLocation = $("#secondDestination").val();
     // URL to reverse single line addresses to lat and lon
-    var reverseGeoURL = "http://www.mapquestapi.com/geocoding/v1/address?key=F2IINs24ZwJe2OApHyVeK1ARNa0ugysB&location=" + secondLocation;
+    var reverseGeoURL = "https://www.mapquestapi.com/geocoding/v1/address?key=F2IINs24ZwJe2OApHyVeK1ARNa0ugysB&location=" + secondLocation;
     $.ajax({
       url: reverseGeoURL,
       method: "GET"
