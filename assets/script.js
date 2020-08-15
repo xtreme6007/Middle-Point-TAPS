@@ -53,8 +53,10 @@ $(document).ready(function () {
 
   // function to call location with Midle point coords
   function callLocation(lat, lon) {
+    var query = $("#query").val()
+    console.log(query);
     // four square api URL
-    var placesURL = "https://api.foursquare.com/v2/venues/explore?client_id=" + fourSquareId + "&client_secret=" + fourSquareSecret + "&v=20180323&ll=" + lon + "," + lat + "&query=bars";
+    var placesURL = "https://api.foursquare.com/v2/venues/explore?client_id=" + fourSquareId + "&client_secret=" + fourSquareSecret + "&v=20180323&ll=" + lon + "," + lat + "&query="+ query;
     $.ajax({
       url: placesURL,
       method: "GET"
@@ -129,7 +131,7 @@ $(document).ready(function () {
     L.mapquest.key = 'lYrP4vF3Uk5zgTiGGuEzQGwGIVDGuy24';
 
     var map = L.mapquest.map('map', {
-      center: [middlepoint[0], middlepoint],
+      center: [39.7392, -104.9903],
       layers: L.mapquest.tileLayer('map'),
       zoom: 6
     });
@@ -139,6 +141,8 @@ $(document).ready(function () {
       draggable: false
     }).bindPopup('Dallas, tx').addTo(map);
 
+  
+
     var denverLatLngs = [
       [36.99, -102.05],
       [37, -109.05],
@@ -146,7 +150,6 @@ $(document).ready(function () {
       [41, -102.05]
     ];
 
-    L.polygon(denverLatLngs, {color: 'red'}).addTo(map);
   };
 
 
