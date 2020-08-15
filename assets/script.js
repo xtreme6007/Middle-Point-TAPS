@@ -66,7 +66,7 @@ $(document).ready(function () {
       var locations = response.response.groups[0].items
       var returnLocations = [];
       for (var i = 0; i < locations.length; i++) {
-        console.log(locations[i]);
+        // console.log(locations[i]);
 
         // name of locations
         var name = locations[i].venue.name;
@@ -77,13 +77,28 @@ $(document).ready(function () {
 
         returnLocations.push({ name, address, summary });
       }
-      return returnLocations;
+      displayResults(returnLocations);
       /*response.response.groups[0].items.forEach(location => {
         console.log(location)
     
       })*/
     });
   }
+
+  function displayResults(results) {
+    // console.log(results);
+    for (let i = 0; i < results.length; i++) {
+      const element = results[i];
+      var name = $("<h3>").text(element.name)
+      $("#infoResults").append(name);
+      var summary = $("<h4>").text(element.summary)
+      $("#infoResults").append(summary);
+      var address = $("<h5>").text(element.address)
+      $("#infoResults").append(address);
+    }
+  
+  }
+
   // Map quest api to reverse single line addresses into lat and lon 
   function reverseGeo() {
     // get value from second address text box
@@ -94,7 +109,7 @@ $(document).ready(function () {
       url: reverseGeoURL,
       method: "GET"
     }).then(function (response) {
-      console.log(response);
+      // console.log(response);
       // second destination latitude
       secondLat = response.results[0].locations[0].latLng.lat;
       // second destination longitude
