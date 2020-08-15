@@ -16,8 +16,9 @@ var currentLat;
 var currentLon;
 var secondLat;
 var secondLon;
-var middlePointResults
-
+var middlePointResults;
+var map;
+var middlepoint;
 // Define radius function
 if (typeof (Number.prototype.toRad) === "undefined") {
   Number.prototype.toRad = function () {
@@ -35,19 +36,26 @@ if (typeof (Number.prototype.toDeg) === "undefined") {
 // when page loads
 $(document).ready(function () {
   // get current location fiunction
-  function getLocation() {
+  
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition);
     } else {
       x.innerHTML = "Geolocation is not supported by this browser.";
     }
-  }
+  
   // current lat and lon positions
   function showPosition(position) {
     // Devices current lattitude
     currentLat = position.coords.latitude;
     // Devices current longitude
     currentLon = position.coords.longitude;
+    L.mapquest.key = 'lYrP4vF3Uk5zgTiGGuEzQGwGIVDGuy24';
+
+    map = L.mapquest.map('map', {
+      center: [currentLat, currentLon],
+      layers: L.mapquest.tileLayer('map'),
+      zoom: 10
+    });
 
   }
 
@@ -56,7 +64,7 @@ $(document).ready(function () {
     var query = $("#query").val()
     //console.log(query);
     // four square api URL
-    var placesURL = "https://api.foursquare.com/v2/venues/explore?client_id=" + fourSquareId + "&client_secret=" + fourSquareSecret + "&v=20180323&ll=" + lon + "," + lat + "&query="+ query;
+    var placesURL = "http://api.foursquare.com/v2/venues/explore?client_id=" + fourSquareId + "&client_secret=" + fourSquareSecret + "&v=20180323&ll=" + lon + "," + lat + "&query="+ query;
     $.ajax({
       url: placesURL,
       method: "GET"
@@ -74,8 +82,8 @@ $(document).ready(function () {
         var address = locations[i].venue.location.formattedAddress[0] + " " + locations[i].venue.location.formattedAddress[1]+ " " + locations[i].venue.location.formattedAddress[2];
         // summary of location
         var summary = locations[i].reasons.items[0].summary;
-
-        returnLocations.push({ name, address, summary });
+        var locationCoord = [locations[i].venue.location.lat, locations[i].venue.location.lng]
+        returnLocations.push({ name, address, summary, locationCoord });
       }
       displayResults(returnLocations);
       /*response.response.groups[0].items.forEach(location => {
@@ -95,6 +103,11 @@ $(document).ready(function () {
       $("#infoResults").append(summary);
       var address = $("<h5>").text(element.address)
       $("#infoResults").append(address);
+      
+      L.marker(element.locationCoord, {
+        icon: L.mapquest.icons.marker(),
+        draggable: false
+      }).bindPopup('Dallas, tx').addTo(map);
     }
   
   }
@@ -104,7 +117,7 @@ $(document).ready(function () {
     // get value from second address text box
     secondLocation = $("#secondDestination").val();
     // URL to reverse single line addresses to lat and lon
-    var reverseGeoURL = "https://www.mapquestapi.com/geocoding/v1/address?key=F2IINs24ZwJe2OApHyVeK1ARNa0ugysB&location=" + secondLocation;
+    var reverseGeoURL = "http://www.mapquestapi.com/geocoding/v1/address?key=F2IINs24ZwJe2OApHyVeK1ARNa0ugysB&location=" + secondLocation;
     $.ajax({
       url: reverseGeoURL,
       method: "GET"
@@ -142,39 +155,16 @@ $(document).ready(function () {
     //-- Return result
     return [lng3.toDeg().toFixed(5), lat3.toDeg().toFixed(5)];
   }
-  window.onload = function() {
-    L.mapquest.key = 'lYrP4vF3Uk5zgTiGGuEzQGwGIVDGuy24';
-
-    var map = L.mapquest.map('map', {
-      center: [39.7392, -104.9903],
-      layers: L.mapquest.tileLayer('map'),
-      zoom: 6
-    });
-
-    L.marker([39.7392, -104.9903], {
-      icon: L.mapquest.icons.marker(),
-      draggable: false
-    }).bindPopup('Dallas, tx').addTo(map);
-
   
-
-    var denverLatLngs = [
-      [36.99, -102.05],
-      [37, -109.05],
-      [41, -109.05],
-      [41, -102.05]
-    ];
-
-  };
 
 
   // submit button on click event
   $("#submitButton").on("click", function () {
     
-    getLocation();
+    
     reverseGeo();
     //console.log(secondLocation)
-    var middlepoint;
+    
     setTimeout(function () {
       //console.log(secondLat, secondLon);
       //console.log(currentLat, currentLon);
