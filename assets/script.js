@@ -69,12 +69,12 @@ $(document).ready(function () {
       url: placesURL,
       method: "GET"
     }).then(function (response) {
-      //console.log(response);
+      
       // variable for locations objects
       var locations = response.response.groups[0].items
+      // empty array for results
       var returnLocations = [];
       for (var i = 0; i < locations.length; i++) {
-        console.log(locations[i]);
 
         // name of locations
         var name = locations[i].venue.name;
@@ -82,14 +82,13 @@ $(document).ready(function () {
         var address = locations[i].venue.location.formattedAddress[0] + " " + locations[i].venue.location.formattedAddress[1]+ " " + locations[i].venue.location.formattedAddress[2];
         // summary of location
         var summary = locations[i].reasons.items[0].summary;
+        // variable for location coords for markers on map 
         var locationCoord = [locations[i].venue.location.lat, locations[i].venue.location.lng]
+        // store results in an aray
         returnLocations.push({ name, address, summary, locationCoord });
       }
       displayResults(returnLocations);
-      /*response.response.groups[0].items.forEach(location => {
-        console.log(location)
-    
-      })*/
+      
     });
   }
 
@@ -97,17 +96,24 @@ $(document).ready(function () {
     // console.log(results);
     for (let i = 0; i < results.length; i++) {
       const element = results[i];
+      // set value for name of venue
       var name = $("<h3>").text(element.name)
+      // append name
       $("#infoResults").append(name);
+      // set summary value
       var summary = $("<h4>").text(element.summary)
+      // append summary
       $("#infoResults").append(summary);
+      // set value of address
       var address = $("<h5>").text(element.address)
+      // append address
       $("#infoResults").append(address);
-      
+      // place marker for each result
       L.marker(element.locationCoord, {
         icon: L.mapquest.icons.marker(),
         draggable: false
-      }).bindPopup('Dallas, tx').addTo(map);
+        // Display Address and name on markers in pop up when clicked 
+      }).bindPopup(element.name + "<br>" + element.address).addTo(map);
     }
   
   }
@@ -122,7 +128,6 @@ $(document).ready(function () {
       url: reverseGeoURL,
       method: "GET"
     }).then(function (response) {
-      // console.log(response);
       // second destination latitude
       secondLat = response.results[0].locations[0].latLng.lat;
       // second destination longitude
@@ -166,15 +171,10 @@ $(document).ready(function () {
     //console.log(secondLocation)
     
     setTimeout(function () {
-      //console.log(secondLat, secondLon);
-      //console.log(currentLat, currentLon);
       // call middlePoint function with cords
       middlepoint = middlePoint(currentLat, currentLon, secondLat, secondLon);
-      console.log(middlepoint[0]);
-      console.log(middlepoint[1]);
       // return responses with middlepoint coords
       middlePointResults = callLocation(middlepoint[0], middlepoint[1]);
-      console.log(middlePointResults);
     }, 7000);
 
     
