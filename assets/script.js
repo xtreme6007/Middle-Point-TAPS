@@ -51,7 +51,7 @@ $(document).ready(function () {
 
   function callLocation(lat, lon) {
     // four square api URL
-    var placesURL = "https://api.foursquare.com/v2/venues/explore?client_id=" + fourSquareId + "&client_secret=" + fourSquareSecret + "&v=20180323&ll=" + lat + "," + lon + "&query=coffee";
+    var placesURL = "https://api.foursquare.com/v2/venues/explore?client_id=" + fourSquareId + "&client_secret=" + fourSquareSecret + "&v=20180323&ll=" + lon + "," + lat + "&query=coffee";
     $.ajax({
       url: placesURL,
       method: "GET"
@@ -61,7 +61,7 @@ $(document).ready(function () {
       var locations = response.response.groups[0].items
       var returnLocations = [];
       for (var i = 0; i < locations.length; i++) {
-        //console.log(locations[i]);
+        console.log(locations[i]);
 
         // name of locations
         var name = locations[i].venue.name;
@@ -125,16 +125,17 @@ $(document).ready(function () {
 
   $("#submitButton").on("click", function () {
       getLocation();
-    var secondLocation = reverseGeo();
+     reverseGeo();
+    //console.log(secondLocation)
     var middlepoint;
     setTimeout(function () {
-      console.log(secondLat, secondLon);
+      //console.log(secondLat, secondLon);
       //console.log(currentLat, currentLon);
       
       middlepoint = middlePoint(currentLat, currentLon, secondLat, secondLon);
       console.log(middlepoint[0]);
       console.log(middlepoint[1]);
-      var middlePointResults = callLocation(middlepoint[1], middlepoint[0]);
+      var middlePointResults = callLocation(middlepoint[0], middlepoint[1]);
       console.log(middlePointResults);
     }, 7000);
   });
