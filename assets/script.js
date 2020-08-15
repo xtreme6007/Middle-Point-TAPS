@@ -54,7 +54,7 @@ $(document).ready(function () {
   // function to call location with Midle point coords
   function callLocation(lat, lon) {
     var query = $("#query").val()
-    console.log(query);
+    //console.log(query);
     // four square api URL
     var placesURL = "https://api.foursquare.com/v2/venues/explore?client_id=" + fourSquareId + "&client_secret=" + fourSquareSecret + "&v=20180323&ll=" + lon + "," + lat + "&query="+ query;
     $.ajax({
@@ -66,7 +66,7 @@ $(document).ready(function () {
       var locations = response.response.groups[0].items
       var returnLocations = [];
       for (var i = 0; i < locations.length; i++) {
-        // console.log(locations[i]);
+        console.log(locations[i]);
 
         // name of locations
         var name = locations[i].venue.name;
