@@ -107,7 +107,7 @@ $(document).ready(function () {
       L.marker(element.locationCoord, {
         icon: L.mapquest.icons.marker(),
         draggable: false
-      }).bindPopup('Dallas, tx').addTo(map);
+      }).bindPopup(element.name + "<br>" + element.address).addTo(map);
     }
   
   }
