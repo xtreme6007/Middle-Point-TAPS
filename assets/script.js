@@ -132,6 +132,7 @@ $(document).ready(function () {
       secondLat = response.results[0].locations[0].latLng.lat;
       // second destination longitude
       secondLon = response.results[0].locations[0].latLng.lng;
+      $("#infoResults").empty();
 
 
 
@@ -175,7 +176,7 @@ $(document).ready(function () {
       middlepoint = middlePoint(currentLat, currentLon, secondLat, secondLon);
       // return responses with middlepoint coords
       middlePointResults = callLocation(middlepoint[0], middlepoint[1]);
-    }, 7000);
+    }, 1000);
 
     
   });
