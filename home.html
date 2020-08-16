@@ -19,10 +19,9 @@
     font-family: "Raleway", Arial, Helvetica, sans-serif
   }
 
-  #bgimg {
+  .background {
     background-image: url("assets/img/city.jpg");
-    width: 1500px;
-    height: 1800px;
+    background-size: cover;
   }
 </style>
 <!-- <body class="w3-light-grey"> -->
@@ -32,21 +31,19 @@
   <div class="w3-bar w3-white w3-border-bottom">
     <a class="w3-bar-item"><img class="logo" src="assets/img/logo.png" width="120px" height="100px"></a>
   </div>
-  <!-- <img class="logo" src="assets/img/" -->
 
   <!-- Header -->
-  <header class="w3-display-container w3-content w3-red" style="max-width:1390px">
-
-    <div class="w3-container w3-content" style="height:1000px">
-
-      <!-- <img id='changing-image' class="w3-image" src="assets/img/city.jpg" alt="City" width="1500" height="100"> -->
-
+  <header class="w3-display-container w3-content w3-hide-small" style="max-width:1390px">
+    <div class="background">
+    <!-- <img id='changing-image' class="w3-image" src="assets/img/city.jpg" alt="City" width="1500" height="700"> -->
+    <div class="w3-container w3-content" style="height:600px">
+      <br>
       <h3 class="w3-content">
         It isn't always easy finding a good half way point when you plan on meeting someone.
         But with Middle Point you decide
         what <i> sort </i> of place you want to meet in.
-        You can also determine the type of place by <i>mood.</i><br>
-        Enter the address points below, choose the mood and we will generate the places for you.
+        You can also determine the type of place by <i>Category.</i><br>
+        Enter the address points below, choose the type of place and we will generate the places for you.
       </h3>
 
       <br>
@@ -68,14 +65,12 @@
 
         </div>
 
-        <br>
-        <br>
         <!-- Mood Selection -->
         <div class="w3-row-padding">
           <!-- Choose Category -->
           <div class="w3-half">
             <label><strong>Choose Category</strong></label>
-            <input class="w3-input w3-border" type="text" placeholder="ex. Bars, Zoo, Coffee, Movies, etc..." id = "query">
+            <input class="w3-input w3-border" type="text" placeholder="ex. Bar, Zoo, Coffee, Movie, etc..." id = "query">
 
           </div>
           <!-- <select class="w3-select" onchange="updatePage(this.value, this.options[this.selectedIndex].getAttribute('img'), this.options[this.selectedIndex].getAttribute('alt') )">
@@ -90,25 +85,23 @@
         <br>
 
         <div class="w3-row-padding w3-center">
-          <button id="submitButton" class="w3-button w3-black w3-round w3-hover-aqua">Submit</button>
+          <button id="submitButton" class="w3-button w3-black w3-round w3-hover-">Submit</button>
         </div>
 
       </div>
     </div>
+  </div>
   </header>
 
   <br>
-  <br>
-
   <!-- Display Reults MAP -->
-  <div class="w3-display-container w3-content" style="max-width:1400px">
+  <div class="w3-display-container w3-content w3-light-grey" style="max-width:1400px">
 
     <div class="w3-row-padding">
-      <div class="w3-quarter w3-blue" style="height:1000px">
+      <div class="w3-quarter w3-pink" style="height:580px">
         <p>Info</p>
         <div id="infoResults">
           <!-- <div class="name">
-            N
           </div>
           <div class="summary">
             Rating:
@@ -118,8 +111,9 @@
           </div> -->
         </div>
       </div>
-      <div class="w3-threequarter w3-green" style="height:1000px">
-        <div id="map" style="width: 100%; height: 530px;"></div>
+      
+      <div class="w3-threequarter" style="height:1000px">
+        <div id="map" style="width: 100%; height: 580px;"></div>
         <p>Google Maps</p>
       </div>
     </div>
@@ -127,8 +121,8 @@
   </div>
 
   <!-- Footer -->
-  <footer class="w3-container w3-center w3-opacity w3-margin-bottom">
-    <h5>Contributers</h5>
+  <footer class="w3-container w3-center w3-opacity w3-margin-bottom w3-light-grey">
+    <h5>Contributers:</h5>
     <!-- Teresa -->
     <div class="w3-xlarge w3-padding-16">
       Teresa Heidt
