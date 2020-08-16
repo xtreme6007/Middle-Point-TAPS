@@ -132,6 +132,7 @@ $(document).ready(function () {
       secondLat = response.results[0].locations[0].latLng.lat;
       // second destination longitude
       secondLon = response.results[0].locations[0].latLng.lng;
+      $("#infoResults").empty();
 
 
 
