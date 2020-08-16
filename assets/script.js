@@ -57,12 +57,12 @@ $(document).ready(function () {
       url: placesURL,
       method: "GET"
     }).then(function (response) {
-      console.log(response);
+      //console.log(response);
       // variable for locations objects
       var locations = response.response.groups[0].items
       var returnLocations = [];
       for (var i = 0; i < locations.length; i++) {
-        console.log(locations[i]);
+        //console.log(locations[i]);
 
         // name of locations
         var name = locations[i].venue.name;
@@ -88,13 +88,12 @@ $(document).ready(function () {
       url: reverseGeoURL,
       method: "GET"
     }).then(function (response) {
-      console.log(response);
+      //console.log(response);
       // second destination latitude
        secondLat = response.results[0].locations[0].latLng.lat;
       // second destination longitude
        secondLon = response.results[0].locations[0].latLng.lng;
-      console.log(secondLat);
-      console.log(secondLon);
+      
 
 
      
@@ -120,18 +119,18 @@ $(document).ready(function () {
     var lng3 = lng1 + Math.atan2(bY, Math.cos(lat1) + bX);
 
     //-- Return result
-    return [lng3.toDeg(), lat3.toDeg()];
+    return [lng3.toDeg().toFixed(5), lat3.toDeg().toFixed(5)];
   }
 
 
 
   $("#submitButton").on("click", function () {
       getLocation();
-    var secondLocation = reverseGeo();
+    var secondLocations = reverseGeo();
     var middlepoint;
     setTimeout(function () {
-      console.log(secondLat, secondLon);
-      console.log(currentLat, currentLon);
+      //console.log(secondLat, secondLon);
+      //console.log(currentLat, currentLon);
       
       middlepoint = middlePoint(currentLat, currentLon, secondLat, secondLon);
       console.log(middlepoint[0]);
