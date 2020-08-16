@@ -175,7 +175,7 @@ $(document).ready(function () {
       middlepoint = middlePoint(currentLat, currentLon, secondLat, secondLon);
       // return responses with middlepoint coords
       middlePointResults = callLocation(middlepoint[0], middlepoint[1]);
-    }, 7000);
+    }, 1000);
 
     
   });
