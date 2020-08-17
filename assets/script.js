@@ -19,6 +19,7 @@ var secondLon;
 var middlePointResults;
 var map;
 var middlepoint;
+var fg;
 // Define radius function
 if (typeof (Number.prototype.toRad) === "undefined") {
   Number.prototype.toRad = function () {
@@ -35,8 +36,11 @@ if (typeof (Number.prototype.toDeg) === "undefined") {
 
 // when page loads
 $(document).ready(function () {
+  // scroll to top on refresh
+  window.onbeforeunload = function () {
+    window.scrollTo(0, 0);
+  }
   // get current location fiunction
-  
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition);
     } else {
@@ -54,7 +58,7 @@ $(document).ready(function () {
     map = L.mapquest.map('map', {
       center: [currentLat, currentLon],
       layers: L.mapquest.tileLayer('map'),
-      zoom: 10
+      zoom: 11
     });
 
   }
@@ -108,6 +112,8 @@ $(document).ready(function () {
       var address = $("<h5>").text(element.address)
       // append address
       $("#infoResults").append(address);
+      var line = $("<hr>");
+      $("#infoResults").append(line);
       // place marker for each result
       L.marker(element.locationCoord, {
         icon: L.mapquest.icons.marker(),
@@ -134,9 +140,6 @@ $(document).ready(function () {
       secondLon = response.results[0].locations[0].latLng.lng;
       $("#infoResults").empty();
 
-
-
-
     });
 
   }
@@ -161,12 +164,14 @@ $(document).ready(function () {
     //-- Return result
     return [lng3.toDeg().toFixed(5), lat3.toDeg().toFixed(5)];
   }
+
+
   
 
 
   // submit button on click event
   $("#submitButton").on("click", function () {
-    
+    window.scrollBy(0, 1630);
     
     reverseGeo();
     //console.log(secondLocation)
