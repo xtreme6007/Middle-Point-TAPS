@@ -64,7 +64,7 @@ $(document).ready(function () {
     var query = $("#query").val()
     //console.log(query);
     // four square api URL
-    var placesURL = "http://api.foursquare.com/v2/venues/explore?client_id=" + fourSquareId + "&client_secret=" + fourSquareSecret + "&v=20180323&ll=" + lon + "," + lat + "&query="+ query;
+    var placesURL = "https://api.foursquare.com/v2/venues/explore?client_id=" + fourSquareId + "&client_secret=" + fourSquareSecret + "&v=20180323&ll=" + lon + "," + lat + "&query="+ query;
     $.ajax({
       url: placesURL,
       method: "GET"
@@ -123,7 +123,7 @@ $(document).ready(function () {
     // get value from second address text box
     secondLocation = $("#secondDestination").val();
     // URL to reverse single line addresses to lat and lon
-    var reverseGeoURL = "http://www.mapquestapi.com/geocoding/v1/address?key=F2IINs24ZwJe2OApHyVeK1ARNa0ugysB&location=" + secondLocation;
+    var reverseGeoURL = "https://www.mapquestapi.com/geocoding/v1/address?key=F2IINs24ZwJe2OApHyVeK1ARNa0ugysB&location=" + secondLocation;
     $.ajax({
       url: reverseGeoURL,
       method: "GET"
