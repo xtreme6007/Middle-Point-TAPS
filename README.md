@@ -7,6 +7,7 @@
 4. Why
 5. Who we are
 6. Image
+7. Links
 # Introduction:
 TAPS INC brings you Middle Point. This app is designed to help people find the middle point to meet between two locations.
 # How it works: 
@@ -38,6 +39,9 @@ The user then enters the address they want to find the middle point for, and wha
 When the user selects the place they want and the address, the list of places populates to the left of the page and pins the exact locations on the map beside the list.
 
 ![screenshot](assets/img/img4.png)
+
+# Links
+[Link to the presentation](https://docs.google.com/presentation/d/1Zad3ktdRxT3geROWrj5R1UPwxMr7yqT2CnfBS9Smr-s/edit?usp=sharing)
 
 
 
