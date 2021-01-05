@@ -36,11 +36,12 @@ if (typeof (Number.prototype.toDeg) === "undefined") {
 
 // when page loads
 $(document).ready(function () {
+  alert("This Application Only Works If You Have Location Services Enabled.")
   // scroll to top on refresh
   window.onbeforeunload = function () {
     window.scrollTo(0, 0);
   }
-  // get current location fiunction
+  // get current location
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition);
     } else {
@@ -116,11 +117,12 @@ $(document).ready(function () {
       $("#infoResults").append(line);
       // place marker for each result
       L.marker(element.locationCoord, {
-        icon: L.mapquest.icons.marker(),
+        iconUrl: L.mapquest.icons.marker(),
         draggable: false
         // Display Address and name on markers in pop up when clicked 
       }).bindPopup(element.name + "<br>" + element.address).addTo(map);
     }
+    
   
   }
 
