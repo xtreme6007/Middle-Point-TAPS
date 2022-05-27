@@ -130,7 +130,7 @@ $(document).ready(function () {
     // get value from second address text box
     secondLocation = $("#secondDestination").val();
     // URL to reverse single line addresses to lat and lon
-    var reverseGeoURL = "https://www.mapquestapi.com/geocoding/v1/address?key=F2IINs24ZwJe2OApHyVeK1ARNa0ugysBB&location=" + secondLocation;
+    var reverseGeoURL = "https://www.mapquestapi.com/geocoding/v1/address?key=F2IINs24ZwJe2OApHyVeK1ARNa0ugysB&location=" + secondLocation;
     $.ajax({
       url: reverseGeoURL,
       method: "GET"
