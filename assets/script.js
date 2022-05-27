@@ -10,7 +10,7 @@ var fourSquareId = "YN1AUPOE5HOWLFCHNIO3YUILB3APQWNFSKZO5Q03JODNYNUC"
 var fourSquareSecret = "BXRN2XVMQSMXHWT1EKRZMJWLJNN3IAUEFULDKBUGRZ4XZQA4";
 
 // Map Quest id
-var mapQuestId = "F2IINs24ZwJe2OApHyVeK1ARNa0ugysB";
+var mapQuestId = "my_application_1596909811_321663";
 // lat variables
 var currentLat;
 var currentLon;
@@ -54,7 +54,7 @@ $(document).ready(function () {
     currentLat = position.coords.latitude;
     // Devices current longitude
     currentLon = position.coords.longitude;
-    L.mapquest.key = 'lYrP4vF3Uk5zgTiGGuEzQGwGIVDGuy24';
+    L.mapquest.key = 'F2IINs24ZwJe2OApHyVeK1ARNa0ugysB';
 
     map = L.mapquest.map('map', {
       center: [currentLat, currentLon],
@@ -130,7 +130,7 @@ $(document).ready(function () {
     // get value from second address text box
     secondLocation = $("#secondDestination").val();
     // URL to reverse single line addresses to lat and lon
-    var reverseGeoURL = "https://www.mapquestapi.com/geocoding/v1/address?key=F2IINs24ZwJe2OApHyVeK1ARNa0ugysB&location=" + secondLocation;
+    var reverseGeoURL = "https://www.mapquestapi.com/geocoding/v1/address?key=F2IINs24ZwJe2OApHyVeK1ARNa0ugysBB&location=" + secondLocation;
     $.ajax({
       url: reverseGeoURL,
       method: "GET"
