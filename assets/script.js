@@ -39,6 +39,7 @@ $(document).ready(function () {
   // scroll to top on refresh
   window.onbeforeunload = function () {
     window.scrollTo(0, 0);
+    console.log("Current Lat", currentLat)
   }
   // get current location fiunction
     if (navigator.geolocation) {
@@ -147,6 +148,7 @@ $(document).ready(function () {
   // This function is with the  help from a JS fiddle by Kévin Rignault link: http://jsfiddle.net/kevinrignault/gzq64p56/ 
   //-- Define middle point function
   function middlePoint(lat1, lng1, lat2, lng2) {
+    console.log("LAT1", lat1)
 
     //-- Longitude difference
     var dLng = (lng2 - lng1).toRad();
