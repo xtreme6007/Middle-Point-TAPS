@@ -54,7 +54,7 @@ $(document).ready(function () {
     currentLat = position.coords.latitude;
     // Devices current longitude
     currentLon = position.coords.longitude;
-    L.mapquest.key = 'F2IINs24ZwJe2OApHyVeK1ARNa0ugysB';
+    L.mapquest.key = 'lYrP4vF3Uk5zgTiGGuEzQGwGIVDGuy24';
 
     map = L.mapquest.map('map', {
       center: [currentLat, currentLon],
